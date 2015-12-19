@@ -1,7 +1,8 @@
-Piss Fit Org Static Site
+PissFit.Org Static Site
 ------------------------
 
 [pissfit.org](http://pissfit.org) : London beer runners!
+
 
 
 #### Outstanding Features
@@ -13,5 +14,4 @@ Piss Fit Org Static Site
  - Famous beer runners through history
  - Visited brewery information 
  - Sponsor a run signup
- - 
  
