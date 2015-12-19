@@ -1,2 +1,5 @@
-# pissfit
-London beer runners. pissfit.org static website
+Piss Fit Org Static Site
+------------------------
+
+[pissfit.org](http://pissfit.org) : London beer runners!
+
