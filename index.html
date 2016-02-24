@@ -72,7 +72,7 @@
                 <div class="col-lg-12 text-center">
                     <h2>We run places. We drink beer. We do both at the same time.</h2>
                     <p>As you all know, the increasing popularity of the hipster trends, novelty endurance runs and craft beer, begs the inevitable fusion of the two, to form Piss Fit.</p>
-                    <p class="lead">Join us on our next adventure <a target="_blank" href="#signup">here!</a></p>
+                    <p class="lead">Join us on our next adventure <a target="_blank" href="#signup" data-toggle="modal" data-target="#myModal">here!</a></p>
                 </div>
             </div>
             <!-- /.row -->
@@ -100,6 +100,7 @@
                                 </h4>
                                 <h5>Beer Run III: 5th March 2016</h5>
                                 <p>This time we go to south London, from the Old Brewery (Meantime's original brewery - yeah, yeah they're owned by SAB Miller who also own other great brands such as Fosters, Tyskie et al), to Brockley Brewery, Brick Brewery in Peckham before finishing at Brixton Brewery. As a bonus, we'll also take in the delights of Greenwich park, the Hilly Fields stone circle, and Nunhead cemetary (one of London's "Magnificent Seven")!</p>
+                                <p><button class="btn btn-success" data-toggle="modal" data-target="#myModal">Sign Up</button></p>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
@@ -181,6 +182,35 @@
         </div>
     </footer>
 
+!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign up for news on new PissFit runs</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="InputName">First name</label>
+            <input id="form-name" type="text" class="form-control" placeholder="Beer (AKA Runner) Doe">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail">Email address</label>
+            <input id="form-email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="form-submit" type="button" class="btn btn-success" data-dismiss="modal">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -217,6 +247,33 @@
             }
         });
     });
+
+    $("#form-submit").on('click', postContactToGoogle);
+
+    function postContactToGoogle(){
+        var name = $('#form-name').val();
+        var email = $('#form-email').val();
+        $.ajax({
+             url: "https://docs.google.com/forms/d/14UZmonB-oeTWElUKn-1xuO6VFTR1qHX214SjUEWl-LE/formResponse",
+             data: {"entry.1451660178" : name, "entry.1139602439" : email},
+             type: "POST",
+             dataType: "xml",
+             statusCode: {
+                 0: function (){
+                     $('#form-name').val("");
+                     $('#form-email').val("");
+                     //Success message
+      
+                 },
+                 200: function (){
+                     $('#form-name').val("");
+                     $('#form-email').val("");
+                     //Success Message
+                 }
+             }
+         });
+    }
+    
     </script>
 
 <script>
